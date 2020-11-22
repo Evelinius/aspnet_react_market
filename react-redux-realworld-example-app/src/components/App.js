@@ -14,6 +14,8 @@ import Register from '../components/Register';
 import Settings from '../components/Settings';
 import { store } from '../store';
 import { push } from 'react-router-redux';
+import CreateProduct from './Product/CreateProduct';
+import AllProducts from './Product/AllProducts';
 
 const mapStateToProps = state => {
   return {
@@ -65,6 +67,8 @@ class App extends React.Component {
             <Route path="/settings" component={Settings} />
             <Route path="/@:username/favorites" component={ProfileFavorites} />
             <Route path="/@:username" component={Profile} />
+            <Route path="/createProduct" component={CreateProduct}/>
+            <Route path="/allProducts" component={AllProducts}/>
             </Switch>
         </div>
       );

@@ -3,7 +3,7 @@ import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
-const API_ROOT = 'https://localhost:44337';
+const API_ROOT = 'http://localhost:5000';
 
 const encode = encodeURIComponent;
 const responseBody = res => res.body;
@@ -68,6 +68,13 @@ const Articles = {
     requests.post('/articles', { article })
 };
 
+const Products = {
+  all: () =>
+    requests.get('/products'),
+  create: product =>
+    requests.post(`/products`, { product })
+}
+
 const Comments = {
   create: (slug, comment) =>
     requests.post(`/articles/${slug}/comments`, { comment }),
@@ -92,5 +99,6 @@ export default {
   Comments,
   Profile,
   Tags,
+  Products,
   setToken: _token => { token = _token; }
 };
