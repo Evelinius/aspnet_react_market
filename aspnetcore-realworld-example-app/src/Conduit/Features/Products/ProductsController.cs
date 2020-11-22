@@ -18,6 +18,12 @@ namespace Conduit.Features.Products
             _mediator = mediator;
         }
 
+        [HttpGet]
+        public async Task<ProductsEnvelope> Get()
+        {
+            return await _mediator.Send(new List.Query());
+        }
+
         [HttpPost]
         public async Task<ProductEnvelope> Create([FromBody] Create.Command command)
         {
