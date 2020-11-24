@@ -18,6 +18,9 @@ namespace Conduit.Domain
 
         [JsonIgnore]
         public List<ArticleFavorite> ArticleFavorites { get; set; }
+        
+        [JsonIgnore]
+        public List<ProductFavorite> ProductFavorites { get; set; }
 
         [JsonIgnore]
         public List<FollowedPeople> Following { get; set; }

@@ -30,5 +30,11 @@ namespace Conduit.Features.Products
             return await _mediator.Send(command);
         }
 
+        [HttpGet("{productId}/like")]
+        public async Task Like([FromRoute] int productId)
+        {
+            await _mediator.Send(new Like.Command(productId));
+        }
+
     }
 }

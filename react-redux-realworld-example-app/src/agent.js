@@ -72,7 +72,9 @@ const Products = {
   all: () =>
     requests.get('/products'),
   create: product =>
-    requests.post(`/products`, { product })
+    requests.post(`/products`, { product }),
+  like: productId =>
+    requests.get(`/products/${productId}/like`)
 }
 
 const Comments = {
