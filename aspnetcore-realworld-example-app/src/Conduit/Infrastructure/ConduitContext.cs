@@ -21,6 +21,7 @@ namespace Conduit.Infrastructure
         public DbSet<Tag> Tags { get; set; }
         public DbSet<ArticleTag> ArticleTags { get; set; }
         public DbSet<ArticleFavorite> ArticleFavorites { get; set; }
+        public DbSet<ProductFavorite> ProductFavorite { get; set; }
         public DbSet<FollowedPeople> FollowedPeople { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -48,6 +49,19 @@ namespace Conduit.Infrastructure
 
                 b.HasOne(pt => pt.Person)
                     .WithMany(t => t.ArticleFavorites)
+                    .HasForeignKey(pt => pt.PersonId);
+            });
+
+            modelBuilder.Entity<ProductFavorite>(b =>
+            {
+                b.HasKey(t => new { t.ProductId, t.PersonId });
+
+                b.HasOne(pt => pt.Product)
+                    .WithMany(p => p.ProductFavorites)
+                    .HasForeignKey(pt => pt.ProductId);
+
+                b.HasOne(pt => pt.Person)
+                    .WithMany(t => t.ProductFavorites)
                     .HasForeignKey(pt => pt.PersonId);
             });
 
